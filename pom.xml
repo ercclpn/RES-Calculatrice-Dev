@@ -6,7 +6,7 @@
 
     <groupId>ch.res.labo.calculatrice</groupId>
     <artifactId>RES-Calculatrice</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0-MultiServer</version>
     <build>
         <plugins>
             <plugin>
@@ -15,6 +15,18 @@
                 <configuration>
                     <source>1.8</source>
                     <target>1.8</target>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <mainClass>application.MultiServerApplication</mainClass>
+                        </manifest>
+                    </archive>
                 </configuration>
             </plugin>
         </plugins>

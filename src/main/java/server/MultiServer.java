@@ -8,6 +8,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import calculator.Calculator;
 
 /**
  * This class implements a multi-threaded TCP server. It is able to interact
@@ -100,7 +101,6 @@ public class MultiServer {
             @Override
             public void run() {
                 String line;
-                boolean shouldRun = true;
 
                 out.println("Welcome to the multi calculate server, please give me an operation:");
                 out.flush();
@@ -108,33 +108,9 @@ public class MultiServer {
 
                     while ((line = in.readLine()) != null) {
                         String [] splitString = line.split(" ");
-
-                        int result = Integer.parseInt(splitString[0]);
-                        int b = Integer.parseInt((splitString[2]));
-                        switch(splitString[1]){
-                            case "+" :
-                                result+=b;
-                                break;
-
-                            case "-":
-                                result-=b;
-                                break;
-
-                            case "*":
-                                result*=b;
-                                break;
-
-                            case "/":
-                                result/=b;
-                                break;
-
-                            default:
-                                result=0;
-                                break;
-                        }
-                        out.println("Answer=" + result);
+                        String result = Calculator.calculate(splitString);
+                        out.println(result);
                         out.flush();
-
                         break;
                     }
 

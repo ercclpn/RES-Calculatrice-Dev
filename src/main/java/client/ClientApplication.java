@@ -3,7 +3,7 @@ package client;
 import java.util.Scanner;
 
 public class ClientApplication {
-    public static void main(String[] args) {
+   /* public static void main(String[] args) {
         System.setProperty("java.util.logging.SimpleFormatter.format", "%5$s %n");
 
         final String IP_SERVER = "localhost";
@@ -16,5 +16,5 @@ public class ClientApplication {
         computing = sc.nextLine();
         c1.sendRequest(computing);
         c1.disconnect();
-    }
+    }*/
 }
