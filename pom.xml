@@ -25,12 +25,11 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>application.ServerApplication</mainClass>
+                            <mainClass>application.MultiServerApplication</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
             </plugin>
         </plugins>
     </build>
-
 </project>
