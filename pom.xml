@@ -6,7 +6,8 @@
 
     <groupId>ch.res.labo.calculatrice</groupId>
     <artifactId>RES-Calculatrice</artifactId>
-    <version>1.0-MultiServer</version>
+    <version>1.0-Server</version>
+
     <build>
         <plugins>
             <plugin>
