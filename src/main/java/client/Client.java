@@ -15,7 +15,6 @@ public class Client {
     BufferedReader in;
     PrintWriter out;
     boolean connected = false;
-    String toCompute;
 
     /**
      * This inner class implements the Runnable interface, so that the run()
@@ -28,8 +27,8 @@ public class Client {
         public void run() {
             String notification;
             try {
-                if(connected && (notification = in.readLine()) != null) {
-                    LOG.log(Level.INFO, "Server> {0}", new Object[]{notification});
+                while(connected && (notification = in.readLine()) != null) {
+                   System.out.println("Server> " + notification);
                 }
             } catch (IOException e) {
                 LOG.log(Level.SEVERE, "Connection problem in client: {0}", new Object[]{e.getMessage()});
@@ -47,15 +46,13 @@ public class Client {
      *
      * @param serverAddress the IP address used by the Presence Server
      * @param serverPort the port used by the Presence Server
-     * @param toCompute the calculate to compute with the server
      */
-    public void connect(String serverAddress, int serverPort, String toCompute) {
+    public void connect(String serverAddress, int serverPort) {
         try {
             clientSocket = new Socket(serverAddress, serverPort);
             in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
             out = new PrintWriter(clientSocket.getOutputStream());
             connected = true;
-            this.toCompute = toCompute;
         } catch (IOException e) {
             LOG.log(Level.SEVERE, "Unable to connect to server: {0}", e.getMessage());
             cleanup();
@@ -63,9 +60,16 @@ public class Client {
         }
         // Let us start a thread, so that we can listen for server notifications
         new Thread(new NotificationListener()).start();
+    }
 
+    public void sendRequest(String toCompute) {
         out.println(toCompute);
         out.flush();
+    }
+
+    public void disconnect() {
+        connected = false;
+        cleanup();
     }
 
     private void cleanup() {
