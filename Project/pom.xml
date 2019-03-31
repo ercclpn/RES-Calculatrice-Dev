@@ -6,7 +6,7 @@
 
     <groupId>ch.res.labo.calculatrice</groupId>
     <artifactId>RES-Calculatrice</artifactId>
-    <version>1.0-Server</version>
+    <version>1.0-Client</version>
 
     <build>
         <plugins>
@@ -25,7 +25,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>application.MultiServerApplication</mainClass>
+                            <mainClass>application.ClientApplication</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
